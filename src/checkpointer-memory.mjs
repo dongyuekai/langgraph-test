@@ -18,12 +18,12 @@ const StateAnnotation = Annotation.Root({
 })
 
 // 每跑一轮图 给当前会话访问次数+1
-function recordVisit(state) {
+function recordVisit(state, config) {
   const visitCount = state.visitCount + 1
   const message =
     visitCount === 1
-      ? '欢迎第一次访问'
-      : `这是第 ${visitCount} 次访问了`
+      ? `欢迎${config.metadata.thread_id}第 1 次访问`
+      : `这是${config.metadata.thread_id}第 ${visitCount} 次访问了`
   return {
     visitCount,
     message
